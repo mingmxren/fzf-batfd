@@ -1,5 +1,5 @@
-(($ + commands[fzf])) || return
-(($ + commands[fzf - tmux])) || return
+(($+commands[fzf])) || return
+(($+commands[fzf-tmux])) || return
 
 if [ $+commands[bat] -eq 1 ]; then
     _FZF_PREVIEW='bat --color always {}'
