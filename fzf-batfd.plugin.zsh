@@ -15,6 +15,6 @@ fi
 
 export FZF_DEFAULT_OPTS="--reverse --border --preview '$_FZF_PREVIEW'"
 
-bindkey "^[p" fzf-cd-widget
+bindkey "^[n" fzf-cd-widget
 
 unset _FZF_PREVIEW
