@@ -1,20 +1,17 @@
-# (( $+commands[fzf] )) || return
-# (( $+commands[fzf-tmux] )) || return
+(($ + commands[fzf])) || return
+(($ + commands[fzf - tmux])) || return
 
-# (( $+commands[bat] )) && FZF_FINDER_CAT='bat --color always {}' || FZF_FINDER_CAT='cat {}'
+if [ $+commands[bat] -eq 1 ]; then
+    _FZF_PREVIEW='bat --color always {}'
+else
+    _FZF_PREVIEW='cat {}'
+fi
 
-# if [[ -z $FZF_FINDER_PAGER ]]; then
-#     (( $+commands[bat] )) && FZF_FINDER_PAGER='bat' || FZF_FINDER_PAGER='less'
-# fi
+if [ $+commands[fd] -eq 1]; then
+    export FZF_DEFAULT_COMMAND="fd -t f"
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+fi
 
-# fzf-finder-find() { 
-#     (( $+commands[fd] )) && \
-#     $commands[fd] -t f || find * -type f -not -path './.git/*\'
-# }
+export FZF_DEFAULT_OPTS="--reverse --border --preview '$_FZF_PREVIEW'"
 
-
-# export FZF_DEFAULT_OPTS="--reverse --border --preview '$FZF_FINDER_CAT' --inline-info"
-# export FZF_DEFAULT_COMMAND=fzf-finder-find
-# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-export HELLO_WORLD="Hello"
+unset _FZF_PREVIEW
