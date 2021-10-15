@@ -7,7 +7,7 @@ else
     _FZF_PREVIEW='cat {}'
 fi
 
-if [ $+commands[fd] -eq 1]; then
+if [ $+commands[fd] -eq 1 ]; then
     export FZF_DEFAULT_COMMAND="fd -t f"
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
